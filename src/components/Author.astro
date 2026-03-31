@@ -1,0 +1,18 @@
+---
+interface Props {
+  name: string;
+  href?: string;
+}
+
+const { name, href } = Astro.props;
+---
+
+<div class="author">
+  {href ? <p><a href={href}>{name}</a></p> : <p>{name}</p>}
+</div>
+
+<style>
+  .author {
+    margin-bottom: 0.75rem;
+  }
+</style>

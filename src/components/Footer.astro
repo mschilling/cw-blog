@@ -1,0 +1,36 @@
+---
+const site = {
+  title: 'Computerweetjes.nl',
+  email: 'info@computerweetjes.nl',
+};
+const year = new Date().getFullYear();
+---
+
+<footer class="layout site-footer">
+  <article>
+    <div class="footer-content">
+      <p>{site.title}</p>
+      <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+      <p class="copyright">&copy; {year} {site.title}</p>
+    </div>
+  </article>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--theme-text-lighter);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-top: 4rem;
+  }
+  .footer-content {
+    font-size: 0.875rem;
+    color: var(--theme-text-lighter);
+  }
+  .footer-content p {
+    margin-bottom: 0.25rem;
+  }
+  .copyright {
+    margin-top: 1rem;
+  }
+</style>

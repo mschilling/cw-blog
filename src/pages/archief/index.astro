@@ -1,0 +1,52 @@
+---
+import Head from '@components/Head.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+import CookiePolicy from '@components/CookiePolicy.astro';
+import { getCollection } from 'astro:content';
+import { formatDate } from '@utils/date-helper.util';
+
+import '@styles/global.scss';
+
+const title = 'Archief — Computerweetjes.nl';
+const description = 'Alle artikelen op Computerweetjes.nl';
+
+const allPosts = (await getCollection('posts'))
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+---
+
+<html lang="nl">
+  <head>
+    <Head title={title} description={description} />
+    <style>
+      body {
+        width: 100%;
+        display: grid;
+        grid-template-rows: 3.5rem 1fr;
+        --gutter: 0.5rem;
+        --doc-padding: 2rem;
+      }
+      .content {
+        margin-top: 4rem;
+        margin-bottom: 8rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <Header />
+    <div class="layout">
+      <article class="content">
+        <h2>Archief</h2>
+        <ul>
+          {allPosts.map((post) => (
+            <li>{formatDate(post.data.publishDate)} &raquo; <a href={`/posts/${post.id}/`}>{post.data.title}</a></li>
+          ))}
+        </ul>
+      </article>
+    </div>
+
+    <Footer />
+    <CookiePolicy />
+  </body>
+</html>

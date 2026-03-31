@@ -1,0 +1,67 @@
+---
+import Head from '@components/Head.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+import BlogPostPreview from '@components/BlogPostPreview.astro';
+import CookiePolicy from '@components/CookiePolicy.astro';
+import { getCollection } from 'astro:content';
+
+import '@styles/global.scss';
+
+const title = 'Computerweetjes.nl';
+const description = 'Hoi, welkom op Computerweetjes.nl';
+
+const allPosts = (await getCollection('posts'))
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+---
+
+<html lang="nl">
+  <head>
+    <Head title={title} description={description} />
+    <style>
+      body {
+        width: 100%;
+        display: grid;
+        grid-template-rows: 3.5rem 1fr;
+        --gutter: 0.5rem;
+        --doc-padding: 2rem;
+      }
+      .content {
+        margin-top: 4rem;
+        margin-bottom: 8rem;
+      }
+      .intro {
+        padding-bottom: 4rem;
+        margin-bottom: 2rem;
+        border-bottom: 4px solid var(--theme-divider);
+      }
+      .intro > * {
+        margin: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <Header />
+    <div class="layout">
+      <article class="content">
+        <section class="intro">
+          <p>{description}</p>
+        </section>
+        <section>
+          {allPosts.map((post) => (
+            <BlogPostPreview
+              title={post.data.title}
+              description={post.data.description}
+              publishDate={post.data.publishDate}
+              url={`/posts/${post.id}/`}
+            />
+          ))}
+        </section>
+      </article>
+    </div>
+
+    <Footer />
+    <CookiePolicy />
+  </body>
+</html>

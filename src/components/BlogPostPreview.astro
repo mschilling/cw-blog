@@ -1,0 +1,53 @@
+---
+import { formatDate } from '@utils/date-helper.util';
+
+interface Props {
+  title: string;
+  description?: string;
+  publishDate: string;
+  url: string;
+}
+
+const { title, description, publishDate, url } = Astro.props;
+---
+
+<article class="post-preview">
+  <header>
+    <p class="publish-date">{formatDate(publishDate)}</p>
+    <a href={url}><h2 class="title">{title}</h2></a>
+  </header>
+  <main>
+    <p>{description}</p>
+    <br />
+    <a href={url}>Lees verder</a>
+  </main>
+</article>
+
+<style>
+.post-preview {
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 4px solid var(--theme-divider);
+}
+header {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: flex-start;
+  justify-content: center;
+  padding-bottom: 2rem;
+}
+.title,
+.publish-date {
+  margin: 0;
+}
+.publish-date {
+  font-size: 1.25rem;
+  color: var(--theme-text-lighter);
+}
+.title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--theme-text);
+}
+</style>
