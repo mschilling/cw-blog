@@ -40,8 +40,8 @@ jobs:
 
       - name: Deploy to live
         if: inputs.preview_channel == ''
-        run: firebase deploy --only hosting:arkid-cw-blog --project arkid-sites
+        run: firebase deploy --only hosting:computerweetjes-nl --project computerweetjes-nl
 
       - name: Deploy to preview channel
         if: inputs.preview_channel != ''
-        run: firebase hosting:channel:deploy ${{ inputs.preview_channel }} --only arkid-cw-blog --project arkid-sites --expires 7d
+        run: firebase hosting:channel:deploy ${{ inputs.preview_channel }} --only computerweetjes-nl --project computerweetjes-nl --expires 7d

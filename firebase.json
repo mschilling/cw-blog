@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "arkid-cw-blog",
+    "site": "computerweetjes-nl",
     "public": "dist",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "headers": [
