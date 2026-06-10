@@ -1,0 +1,113 @@
+---
+import Head from '@components/Head.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+
+import '@styles/global.scss';
+
+const title = 'Privacy- en cookieverklaring — Computerweetjes.nl';
+const description =
+  'Privacy- en cookieverklaring van Computerweetjes.nl: welke gegevens we verwerken voor advertenties en statistieken, en hoe je je toestemming beheert.';
+const lastUpdated = '10 juni 2026';
+---
+
+<html lang="nl">
+  <head>
+    <Head title={title} description={description} />
+    <style>
+      body {
+        width: 100%;
+        display: grid;
+        grid-template-rows: 3.5rem 1fr;
+        --gutter: 0.5rem;
+        --doc-padding: 2rem;
+      }
+      .content {
+        margin-top: 4rem;
+        margin-bottom: 8rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <Header />
+    <div class="layout">
+      <article class="content">
+        <h2>Privacy- en cookieverklaring</h2>
+        <p><small>Laatst bijgewerkt: {lastUpdated}</small></p>
+
+        <p>
+          Computerweetjes.nl is een hobbyblog met computertips. Om de site
+          gratis te houden tonen we advertenties en meten we (anoniem) het
+          gebruik van de site. Op deze pagina lees je welke gegevens daarbij
+          worden verwerkt en welke keuzes je hebt.
+        </p>
+
+        <h3>Advertenties (Google AdSense)</h3>
+        <p>
+          Deze site toont advertenties via <strong>Google AdSense</strong>.
+          Google en zijn partners kunnen cookies plaatsen en — alléén met jouw
+          toestemming — advertenties personaliseren op basis van je eerdere
+          bezoeken aan deze en andere websites. Zonder toestemming zie je
+          niet-gepersonaliseerde advertenties. Bij je eerste bezoek vraagt een
+          toestemmingsscherm van Google om je keuze.
+        </p>
+        <ul>
+          <li>
+            <a href="https://policies.google.com/technologies/partner-sites?hl=nl" rel="noopener">
+              Hoe Google gegevens gebruikt van sites die hun services gebruiken
+            </a>
+          </li>
+          <li>
+            <a href="https://adssettings.google.com/" rel="noopener">
+              Advertentie-instellingen van je Google-account aanpassen
+            </a>
+          </li>
+        </ul>
+
+        <h3>Statistieken (Google Analytics)</h3>
+        <p>
+          We gebruiken <strong>Google Analytics</strong> om te zien welke
+          artikelen worden gelezen. Deze statistieken gebruiken we uitsluitend
+          om de site te verbeteren.
+        </p>
+
+        <h3>Je toestemming wijzigen</h3>
+        <p>Je kunt je cookievoorkeur op elk moment opnieuw instellen:</p>
+        <p>
+          <button type="button" id="cw-revoke-consent">Cookie-instellingen wijzigen</button>
+        </p>
+
+        <h3>Je rechten (AVG)</h3>
+        <p>
+          Deze site heeft geen accounts en slaat zelf geen persoonsgegevens van
+          je op. Voor de gegevens die Google als advertentie- en analysepartner
+          verwerkt, verwijzen we naar het
+          <a href="https://policies.google.com/privacy?hl=nl" rel="noopener">privacybeleid van Google</a>.
+          Op grond van de AVG heb je recht op inzage, rectificatie en
+          verwijdering van persoonsgegevens. Vragen of een verzoek? Mail naar
+          <a href="mailto:info@computerweetjes.nl">info@computerweetjes.nl</a>.
+        </p>
+
+        <p>
+          Deze verklaring kan worden bijgewerkt wanneer de site of regelgeving
+          verandert; de datum bovenaan geeft de laatste wijziging aan.
+        </p>
+      </article>
+    </div>
+
+    <Footer />
+
+    <script is:inline>
+      // Reopen Google's consent message (Privacy & messaging) so visitors
+      // can withdraw or change their choice as easily as they gave it.
+      document.getElementById('cw-revoke-consent').addEventListener('click', function () {
+        window.googlefc = window.googlefc || {};
+        window.googlefc.callbackQueue = window.googlefc.callbackQueue || [];
+        window.googlefc.callbackQueue.push(function () {
+          window.googlefc.showRevocationMessage();
+        });
+      });
+    </script>
+  </body>
+</html>

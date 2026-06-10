@@ -3,7 +3,6 @@ import Head from '@components/Head.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import BlogPostPreview from '@components/BlogPostPreview.astro';
-import CookiePolicy from '@components/CookiePolicy.astro';
 import { getCollection } from 'astro:content';
 
 import '@styles/global.scss';
@@ -62,6 +61,5 @@ const allPosts = (await getCollection('posts'))
     </div>
 
     <Footer />
-    <CookiePolicy />
   </body>
 </html>
