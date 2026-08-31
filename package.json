@@ -17,7 +17,7 @@
     "@astrojs/sitemap": "^3.7.3",
     "astro": "^7.2.4",
     "luxon": "^3.5.0",
-    "sass": "^1.102.0"
+    "sass": "^1.103.1"
   },
   "devDependencies": {
     "@types/luxon": "^3.7.5"
