@@ -20,6 +20,6 @@
     "sass": "^1.105.0"
   },
   "devDependencies": {
-    "@types/luxon": "^3.7.5"
+    "@types/luxon": "^3.7.6"
   }
 }
